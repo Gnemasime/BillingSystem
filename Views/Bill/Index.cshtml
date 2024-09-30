@@ -1,0 +1,36 @@
+@model IEnumerable<BillingSystem.Models.Bill>
+
+<h1>Bills</h1>
+<a asp-action="Create" class="btn btn-primary">Create New Bill</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Service</th>
+            <th>User</th>
+            <th>Tariff</th>
+            <th>Amount Due</th>
+            <th>Usage</th>
+            <th>Due Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var bill in Model)
+        {
+            <tr>
+                <td>@bill.Service.ServiceType</td>
+                <td>@bill.User.FirstName @bill.User.LastName</td>
+                <td>@bill.Tariff.TariffType</td>
+                <td>@bill.AmountDue.ToString("C")</td>
+                <td>@bill.Usage</td>
+                <td>@bill.DueDate.ToShortDateString()</td>
+                <td>@bill.Status</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@bill.BillId">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@bill.BillId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

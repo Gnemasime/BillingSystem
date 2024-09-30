@@ -1,0 +1,24 @@
+@model BillingSystem.Models.Tariff
+
+<h1>Create Tariff</h1>
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="TariffType"></label>
+        <select asp-for="TariffType" class="form-control">
+            <option value="">Select Tariff Type</option>
+            @foreach (var type in Enum.GetValues(typeof(TariffName)).Cast<TariffName>())
+            {
+                <option value="@type">@type</option>
+            }
+        </select>
+        <span asp-validation-for="TariffType" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Rate"></label>
+        <input asp-for="Rate" class="form-control" />
+        <span asp-validation-for="Rate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>

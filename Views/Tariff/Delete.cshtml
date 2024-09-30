@@ -1,0 +1,15 @@
+@model BillingSystem.Models.Tariff
+
+<h1>Delete Tariff</h1>
+<h3>Are you sure you want to delete this tariff?</h3>
+<div>
+    <h4>@Model.TariffType</h4>
+    <div>Rate: @Model.Rate.ToString("C")</div>
+</div>
+<form asp-action="DeleteConfirmed">
+    <input type="hidden" asp-for="TariffId" />
+    <div class="form-group">
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>

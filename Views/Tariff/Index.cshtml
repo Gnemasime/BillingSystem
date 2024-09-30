@@ -1,0 +1,26 @@
+@model IEnumerable<BillingSystem.Models.Tariff>
+
+<h1>Tariffs</h1>
+<a asp-action="Create" class="btn btn-primary">Create New Tariff</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tariff Type</th>
+            <th>Rate</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tariff in Model)
+        {
+            <tr>
+                <td>@tariff.TariffType</td>
+                <td>@tariff.Rate.ToString("C")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@tariff.TariffId">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@tariff.TariffId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

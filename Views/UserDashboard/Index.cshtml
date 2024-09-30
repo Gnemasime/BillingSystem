@@ -1,0 +1,32 @@
+@model BillingSystem.Models.UserDashboard
+
+<h1>User Details</h1>
+
+<h3>@Model.User.UserName</h3>
+<p>Email: @Model.User.Email</p>
+<p>Phone: @Model.User.PhoneNumber</p>
+
+<h3>Bills</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Bill ID</th>
+            <th>Amount Due</th>
+            <th>Usage</th>
+            <th>Due Date</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var bill in Model.Bills)
+        {
+            <tr>
+                <td>@bill.BillId</td>
+                <td>@bill.AmountDue.ToString("C")</td>
+                <td>@bill.Usage</td>
+                <td>@bill.DueDate.ToShortDateString()</td>
+                <td>@bill.Status</td>
+            </tr>
+        }
+    </tbody>
+</table>

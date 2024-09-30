@@ -1,0 +1,49 @@
+@model BillingSystem.Models.Bill
+
+<h1>Edit Bill</h1>
+<form asp-action="Edit">
+    <input type="hidden" asp-for="BillId" />
+    <div class="form-group">
+        <label asp-for="ServiceId"></label>
+        <select asp-for="ServiceId" class="form-control" asp-items="ViewBag.ServiceId"></select>
+        <span asp-validation-for="ServiceId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="UserId"></label>
+        <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
+        <span asp-validation-for="UserId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="TariffId"></label>
+        <select asp-for="TariffId" class="form-control" asp-items="ViewBag.TariffId"></select>
+        <span asp-validation-for="TariffId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="AmountDue"></label>
+        <input asp-for="AmountDue" class="form-control" />
+        <span asp-validation-for="AmountDue" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Usage"></label>
+        <input asp-for="Usage" class="form-control" />
+        <span asp-validation-for="Usage" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DueDate"></label>
+        <input asp-for="DueDate" class="form-control" type="date" />
+        <span asp-validation-for="DueDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Status"></label>
+        <select asp-for="Status" class="form-control">
+            @foreach (var status in Enum.GetValues(typeof(BillingSystem.Models.BillStatus)).Cast<BillingSystem.Models.BillStatus>())
+            {
+                <option value="@status" >@status</option>
+            }
+        </select>
+        <span asp-validation-for="Status" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+</form>
